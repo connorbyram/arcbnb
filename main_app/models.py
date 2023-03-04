@@ -15,18 +15,18 @@ ARCTYPE = (
 # Create your models here.
 class Listing(models.Model):
     name = models.CharField(max_length=50)
-    built = models.IntegerField()
+    yearbuilt = models.IntegerField()
     description = models.TextField(max_length=250)
-    arctype = models.CharField(
+    arc_type = models.CharField(
         max_length=3,
         choices=ARCTYPE,
         default=ARCTYPE[0][0]
     ) 
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    guestnum = models.IntegerField()
+    guest_num = models.IntegerField()
     bedrooms = models.IntegerField()
     bathrooms = models.IntegerField()
-    availabile = models.BooleanField()
+    available = models.BooleanField()
 
     def __str__(self):
         return f'{self.name} ({self.id})'
