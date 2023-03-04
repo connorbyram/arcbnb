@@ -1,11 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Listing
 
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+def listings_index(request):
+    listings = Listing.objects.all()
+    return render(request, 'listings/index.html', {
+       'listings': listings
+    })
+def listings_detail(request, listing_id):
+   listing = Listing.objects.get(id=listing_id)
+   return render(request, 'listings/detail.html', {
+      'listing': listing
+   })
+  
 
 
 
