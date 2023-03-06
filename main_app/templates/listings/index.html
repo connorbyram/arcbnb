@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="section">
+    <h1>Listings</h1>
+    <div class="listing-grid">
+        {% for listing in listings %}
+        <a href="{% url 'detail' listing.id %}">
+            <div class="listing-tile">
+                <img src="{{ listing.main_img }}" alt="">
+                <h2>{{ listing.name }}</h2>
+                <h3><span class="bold">${{ listing.price }}</span> Night</h3>
+            </div>
+        </a>
+        {% endfor %}
+     </div>
+</div>
 
-<h1>Listings</h1>
+    
+
+
 
 {% endblock %}

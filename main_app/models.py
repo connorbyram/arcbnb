@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 ARCTYPE = (
-    ('M', 'Modern'),
+    ('Modern', 'Modern'),
     ('MCM', 'Midcentury Modern'),
     ('NC', 'Neo Classical'),
     ('R', 'California Romanza'),
@@ -18,7 +18,7 @@ class Listing(models.Model):
     yearbuilt = models.IntegerField()
     description = models.TextField(max_length=250)
     arc_type = models.CharField(
-        max_length=3,
+        max_length=20,
         choices=ARCTYPE,
         default=ARCTYPE[0][0]
     ) 
