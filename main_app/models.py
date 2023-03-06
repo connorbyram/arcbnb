@@ -3,13 +3,13 @@ from django.urls import reverse
 
 ARCTYPE = (
     ('Modern', 'Modern'),
-    ('MCM', 'Midcentury Modern'),
-    ('NC', 'Neo Classical'),
-    ('R', 'California Romanza'),
-    ('CR', 'Craftsman'),
-    ('COL', 'Colonial Revival'),
-    ('SP', 'Spanish'),
-    ('CHT','Châteauesque'),
+    ('Midcentury Modern', 'Midcentury Modern'),
+    ('Neo Classica', 'Neo Classical'),
+    ('California Romanza', 'California Romanza'),
+    ('Craftsma', 'Craftsman'),
+    ('Colonial Revival', 'Colonial Revival'),
+    ('Spanish', 'Spanish'),
+    ('Châteauesque','Châteauesque'),
 )
 
 # Create your models here.
@@ -18,7 +18,7 @@ class Listing(models.Model):
     yearbuilt = models.IntegerField()
     description = models.TextField(max_length=250)
     arc_type = models.CharField(
-        max_length=20,
+        max_length=50,
         choices=ARCTYPE,
         default=ARCTYPE[0][0]
     ) 
