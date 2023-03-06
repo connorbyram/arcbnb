@@ -4,23 +4,29 @@
 
 <h1>Details</h1>
 <div class="section">
-    <h2>{{ listing.name }}</h2>
-    <div class="listing-imgs">
-        <img src="{{ listing.main_img }}" class="listing-img">
-        <div class="second-img">
-            <img src="{{ listing.second_img }}" class="listing-img">
-            <img src="{{ listing.third_img }}" class="listing-img">
+    <div class="container">
+        <h2>{{ listing.name }}</h2>
+        <div class="listing-imgs">
+            <img src="{{ listing.main_img }}" class="listing-img">
+            <div class="second-img">
+                <img src="{{ listing.second_img }}" class="listing-img">
+                <img src="{{ listing.third_img }}" class="listing-img">
+            </div>
+            <div class="second-img">
+                <img src="{{ listing.second_img }}" class="listing-img">
+                <img src="{{ listing.third_img }}" class="listing-img">
+            </div>
         </div>
+        <ul class="listing-info">
+            <li>{{ listing.arc_type }}</li>
+            <li>Built in {{ listing.yearbuilt }}</li>
+            <li>{{ listing.guest_num }} Guests</li>
+            <li>{{ listing.bedrooms }} Bedrooms</li>
+            <li>{{ listing.bathrooms }} Bath</li>
+            <li>{{ listing.description }}</li>
+        </ul>
+        <button>Reserve</button>
     </div>
-    <ul class="listing-info">
-        <li>{{ listing.arc_type }}</li>
-        <li>Built in {{ listing.yearbuilt }}</li>
-        <li>{{ listing.guest_num }} Guests</li>
-        <li>{{ listing.bedrooms }} Bedrooms</li>
-        <li>{{ listing.bathrooms }} Bath</li>
-        <li>{{ listing.description }}</li>
-    </ul>
-    <button>Reserve</button>
 </div>
 
 

@@ -30,6 +30,8 @@ class Listing(models.Model):
     main_img = models.CharField(max_length=200)
     second_img = models.CharField(max_length=200)
     third_img = models.CharField(max_length=200)
+    fourth_img = models.CharField(max_length=200)
+    fifth_img = models.CharField(max_length=200)
     
 
     def __str__(self):
