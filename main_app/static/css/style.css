@@ -31,6 +31,7 @@ body {
     object-fit: cover;
     height: 250px;
     width: 100%;
+    border-radius: 20px;
 }
 
 
@@ -54,6 +55,7 @@ body {
     height: 30vh;
     display: flex;
     column-gap: 10px;
+    border-radius: 20px;
 }
 
 .second-img {
