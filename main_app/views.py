@@ -20,12 +20,13 @@ def listings_detail(request, listing_id):
       'listing': listing, 'booking_form': booking_form
    })
   
-def add_booking(request, listing_id, user_id):
+def add_booking(request, listing_id):
+   user = request.user
    form = BookingForm(request.POST)
    if form.is_valid():
       new_booking = form.save(commit=False)
       new_booking.listing_id = listing_id
-      new_booking.user = user_id 
+      new_booking.user = user
       new_booking.save()
    return redirect('/', listing_id=listing_id)
 
