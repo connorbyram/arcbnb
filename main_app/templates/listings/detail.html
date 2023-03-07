@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Details</h1>
+<h1>Details {{user.id}}</h1>
 <div class="section">
     <div class="container">
         <h2>{{ listing.name }}</h2>
@@ -25,7 +25,14 @@
             <li>{{ listing.bathrooms }} Bath</li>
             <li>{{ listing.description }}</li>
         </ul>
-        <button>Reserve</button>
+        
+        <form action="{% url 'add_booking' listing.id %}" method="POST">
+            {% csrf_token %}
+            <!-- Render the inputs -->
+            {{ booking_form.as_p }}
+            <input type="submit" class="btn" value="Add Booking">
+        </form>
+      
     </div>
 </div>
 

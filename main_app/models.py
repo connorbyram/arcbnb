@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+# from django.contrib.auth.models import User
 
 ARCTYPE = (
     ('Modern', 'Modern'),
@@ -32,6 +34,7 @@ class Listing(models.Model):
     third_img = models.CharField(max_length=200)
     fourth_img = models.CharField(max_length=200)
     fifth_img = models.CharField(max_length=200)
+
     
 
     def __str__(self):
@@ -40,3 +43,15 @@ class Listing(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'listing_id': self.id})
     
+class Booking(models.Model):
+    date = models.DateField('Booking Date')
+    guests = models.IntegerField()
+    listing = models.ForeignKey(
+        Listing, 
+        on_delete=models.CASCADE
+    )
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+
+    def __str__(self):
+        return f'{self.date} ({self.id})'
