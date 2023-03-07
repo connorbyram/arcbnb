@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Listing
+from .models import Listing, Booking
 from .forms import BookingForm
 
 
@@ -33,6 +33,14 @@ def add_booking(request, listing_id):
    else:
       return redirect('/accounts/login', listing_id=listing_id)
 
+
+def user_bookings(request):
+   user = request.user
+   bookings = Booking.objects.filter(user=user)
+   return render(request, 'user/bookings.html', {
+      'user': user,
+      'bookings': bookings,
+   })
 
 
 
