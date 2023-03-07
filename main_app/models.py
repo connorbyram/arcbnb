@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 ARCTYPE = (
     ('Modern', 'Modern'),
@@ -50,8 +50,8 @@ class Booking(models.Model):
         Listing, 
         on_delete=models.CASCADE
     )
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    print(user)
 
     def __str__(self):
-        return f'{self.date} ({self.id})'
+        return f'{self.user} made a booking for ({self.listing.name})'
