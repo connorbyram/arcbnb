@@ -37,4 +37,16 @@
 </div>
 
 
+<script>
+    const dateEl = document.getElementById('id_checkin');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+
+</script>
+
+
 {% endblock %}

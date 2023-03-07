@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bookings for {{user.username}}</h1>
+<div class="section">
+    <div class="container">
+        <h1>Booking</h1>
+        <div class="listing-grid">
+            {% for booking in bookings %}
+            <div class="listing-tile">
+                <img src="{{ booking.listing.main_img }}" alt="">
+                <h2>{{ booking.listing.name }}</h2>
+                <h3><span class="bold">${{ booking.listing.price }}</span>/night</h3>
+            </div>
+            {% endfor %}
+         </div>
+    </div>
+</div>
+    
+
+
+
+{% endblock %}
