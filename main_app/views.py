@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Listing, Booking
@@ -32,16 +33,29 @@ def add_booking(request, listing_id):
       return redirect('/', listing_id=listing_id)
    else:
       return redirect('/accounts/login', listing_id=listing_id)
+   
+class BookingDelete(DeleteView):
+  model = Booking
+  success_url = '/user/bookings'
 
 
 def user_bookings(request):
    user = request.user
    bookings = Booking.objects.filter(user=user)
+   print(bookings)
    return render(request, 'user/bookings.html', {
       'user': user,
       'bookings': bookings,
    })
 
+
+def booking_detail(request, booking_id):
+   user = request.user
+   booking = Booking.objects.get(id=booking_id)
+   return render(request, 'user/booking_detail.html', {
+      'booking': booking,
+      'user': user
+   })
 
 
 

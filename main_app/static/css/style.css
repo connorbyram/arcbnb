@@ -38,7 +38,7 @@ body {
 
 
 .bold {
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 .listing-info {

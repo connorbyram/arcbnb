@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Booking Details</h1>
+<div class="section">
+    <div class="container">
+        <h2>{{ booking.listing.name }}</h2>
+        <a href="{% url 'booking_delete' booking.id %}">Cancel</a>
+        <div class="listing-imgs">
+            <img src="{{ booking.listing.main_img }}" class="listing-img">
+            <div class="second-img">
+                <img src="{{ booking.listing.second_img }}" class="listing-img">
+                <img src="{{ booking.listing.third_img }}" class="listing-img">
+            </div>
+            <div class="second-img">
+                <img src="{{ booking.listing.fourth_img }}" class="listing-img">
+                <img src="{{ booking.listing.fith_img }}" class="listing-img">
+            </div>
+        </div>
+        <ul class="listing-info">
+            <li>{{ booking.listing.arc_type }}</li>
+            <li>Built in {{ booking.listing.yearbuilt }}</li>
+            <li>{{ booking.listing.guest_num }} Guests</li>
+            <li>{{ booking.listing.bedrooms }} Bedrooms</li>
+            <li>{{ booking.listing.bathrooms }} Bath</li>
+            <li>{{ booking.listing.description }}</li>
+        </ul>
+        
+      
+    </div>
+</div>
+
+
+
+{% endblock %}
