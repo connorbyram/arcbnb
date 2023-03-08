@@ -27,7 +27,7 @@ class Amenity(models.Model):
 class Listing(models.Model):
     name = models.CharField(max_length=50)
     yearbuilt = models.IntegerField()
-    description = models.TextField(max_length=250)
+    description = models.TextField(max_length=800)
     arc_type = models.CharField(
         max_length=50,
         choices=ARCTYPE,
