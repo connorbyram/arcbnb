@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-<body>
+<body id="body">
     <div id="bottomborder" class="section">
         <div class="container">
             <nav>
@@ -23,10 +23,14 @@
                 <div class="right">
                     <a href="{% url 'index' %}">Explore Listings</a>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'logout' %}">Log Out</a>
-                        <div class="user">
+                        <div id="user_menu">
                             <img id="hamburger" src="{% static 'images/hbg.svg' %}" alt="">
                             <img id="profileimg" src="{% static 'images/user.svg' %}" alt="">
+                        </div>
+                        <div id="dropdown">
+                            <a class="dropdown_link" href="{% url 'bookings' %}">Trips</a>
+                            <a class="dropdown_link" href="">Wish List</a>
+                            <a id="logout" class="dropdown_link" href="{% url 'logout' %}">Log Out</a>
                         </div>
                         <!-- <a href="{% url 'bookings' %}">My Bookings</a>
                         <a href="{% url 'logout' %}">Log Out</a> -->
@@ -41,4 +45,17 @@
     </div>
     {% block content %}
     {% endblock %}
+
+    <script>
+        const targetDiv = document.getElementById("dropdown");
+        const btn = document.getElementById("user_menu");
+        targetDiv.style.display = "none"
+        btn.onclick = function () {
+            if (targetDiv.style.display === "none") {
+                targetDiv.style.display = "flex";
+            } else if ((targetDiv.style.display === "flex")) {
+                targetDiv.style.display = "none";
+            }
+        };
+      </script>
 </body>
