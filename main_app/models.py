@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from datetime import date
+from datetime import datetime
 from django.contrib.auth.models import User
 
 ARCTYPE = (
@@ -44,7 +44,9 @@ class Listing(models.Model):
         return reverse('detail', kwargs={'listing_id': self.id})
     
 class Booking(models.Model):
-    date = models.DateField('Booking Date')
+    date = models.DateField('Booking Date', default=datetime.now())
+    checkin = models.DateField('Checkin Date', default=datetime.now())
+    checkout = models.DateField('Checkout Date', default=datetime.now())
     guests = models.IntegerField()
     listing = models.ForeignKey(
         Listing, 
