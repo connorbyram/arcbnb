@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Listing, Booking, Amenity
+from .models import Listing, Booking, Feature
 
 
 admin.site.register(Listing)
 admin.site.register(Booking)
-admin.site.register(Amenity)
+admin.site.register(Feature)

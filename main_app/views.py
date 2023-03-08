@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Listing, Booking
+from .models import Listing, Booking, Feature
 from .forms import BookingForm
 
 
@@ -10,10 +10,20 @@ from .forms import BookingForm
 def home(request):
     return render(request, 'home.html')
 def listings_index(request):
-    listings = Listing.objects.all()
-    return render(request, 'listings/index.html', {
-       'listings': listings
-    })
+   listings = Listing.objects.all()
+   features = Feature.objects.all()
+   return render(request, 'listings/index.html', {
+         'listings': listings,
+         'features': features,
+   })
+def index_feature(request, feature_id):
+   listings = Listing.objects.all()
+   feature = Feature.objects.get(id=feature_id)
+   return render(request, 'listings/filter/index_feature.html', {
+         'listings': listings,
+         'feature': feature,
+   })
+
 def listings_detail(request, listing_id):
    listing = Listing.objects.get(id=listing_id)
    booking_form = BookingForm()
