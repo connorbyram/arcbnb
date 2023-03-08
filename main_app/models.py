@@ -16,13 +16,13 @@ ARCTYPE = (
 
 
 
-class Amenity(models.Model):
+class Feature(models.Model):
     name = models.CharField(max_length=50)
     icon = models.CharField(max_length=200)
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('amenities_detail', kwargs={'pk': self.id})
+        return reverse('features_detail', kwargs={'pk': self.id})
 
 class Listing(models.Model):
     name = models.CharField(max_length=50)
@@ -44,7 +44,7 @@ class Listing(models.Model):
     fourth_img = models.CharField(max_length=200)
     fifth_img = models.CharField(max_length=200)
 
-    amenities = models.ManyToManyField(Amenity)
+    features = models.ManyToManyField(Feature)
 
     def __str__(self):
         return f'{self.name} ({self.id})'
