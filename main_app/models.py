@@ -14,7 +14,16 @@ ARCTYPE = (
     ('Châteauesque','Châteauesque'),
 )
 
-# Create your models here.
+
+
+class Amenity(models.Model):
+    name = models.CharField(max_length=50)
+    icon = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('amenities_detail', kwargs={'pk': self.id})
+
 class Listing(models.Model):
     name = models.CharField(max_length=50)
     yearbuilt = models.IntegerField()
@@ -23,7 +32,7 @@ class Listing(models.Model):
         max_length=50,
         choices=ARCTYPE,
         default=ARCTYPE[0][0]
-    ) 
+    )
     price = models.DecimalField(max_digits=8, decimal_places=2)
     guest_num = models.IntegerField()
     bedrooms = models.IntegerField()
@@ -35,7 +44,7 @@ class Listing(models.Model):
     fourth_img = models.CharField(max_length=200)
     fifth_img = models.CharField(max_length=200)
 
-    
+    amenities = models.ManyToManyField(Amenity)
 
     def __str__(self):
         return f'{self.name} ({self.id})'
