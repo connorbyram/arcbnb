@@ -8,7 +8,7 @@ ARCTYPE = (
     ('Midcentury Modern', 'Midcentury Modern'),
     ('Neo Classica', 'Neo Classical'),
     ('California Romanza', 'California Romanza'),
-    ('Craftsma', 'Craftsman'),
+    ('Craftsman', 'Craftsman'),
     ('Colonial Revival', 'Colonial Revival'),
     ('Spanish', 'Spanish'),
     ('Châteauesque','Châteauesque'),
@@ -53,7 +53,9 @@ class Booking(models.Model):
         on_delete=models.CASCADE
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    print(user)
+
+    def get_absolute_url(self):
+        return reverse('booking_detail', kwargs={'booking_id': self.id})
 
     def __str__(self):
         return f'{self.user} made a booking for ({self.listing.name})'

@@ -4,15 +4,77 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #f7f4efff;
+    font-family: 'Open Sans', sans-serif;
     color: black;
     min-height: 100vh;
     width: 100vw;
     
 }
 
+nav {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    height: 45px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    margin: 0 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    border-radius: 40px;
+    transition: 250ms;
+}
+
+nav a:hover {
+    background-color: lightgrey;
+}
+
+.user {
+    padding: 2px 2px 2px 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    border: solid 1px lightgray;
+    cursor: pointer;
+    transition: 250ms;
+}
+
+.user:hover {
+    box-shadow: 1px 4px 4px lightgrey;
+}
+
+#hamburger {
+    height: 20px;
+    margin-right: 10px;
+}
+
+#profileimg {
+    height: 36px;
+}
+
+
 .section {
     width: 100%;
     padding: 0, 30px;
+}
+
+#bottomborder {
+    padding: 0 0 0 0 !important;
+    border-bottom: solid 1px lightgray;
 }
 
 .container {
@@ -22,6 +84,9 @@ body {
     overflow: hidden;
 }
 
+#bottomborder container {
+    padding: 0 0 0 0 !important;
+}
 .listing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));

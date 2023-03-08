@@ -34,9 +34,14 @@ def add_booking(request, listing_id):
    else:
       return redirect('/accounts/login', listing_id=listing_id)
    
+class BookingUpdate(UpdateView):
+  model = Booking
+  fields = ['guests']
+
 class BookingDelete(DeleteView):
   model = Booking
   success_url = '/user/bookings'
+
 
 
 def user_bookings(request):

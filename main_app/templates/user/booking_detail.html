@@ -7,6 +7,8 @@
     <div class="container">
         <h2>{{ booking.listing.name }}</h2>
         <a href="{% url 'booking_delete' booking.id %}">Cancel</a>
+        <a href="{% url 'booking_update' booking.id %}">Update</a>
+        {{ booking.guests }}
         <div class="listing-imgs">
             <img src="{{ booking.listing.main_img }}" class="listing-img">
             <div class="second-img">
