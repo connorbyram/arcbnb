@@ -1,20 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="section">
     <div class="container">
-        <ul>
+        <div id="filter_list">
             {% for feature in features %}
-                <a href="{% url 'index_feature' feature.id %}"><li> {{ feature.name }} </li></a>
+                {% if current == feature.id %}
+                <a class="current_tile" href="{% url 'index_feature' feature.id %}"> 
+                    <img id="feature_icon" src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
+                    {{ feature.name }} 
+                </a>
+                {% else %}
+                    <a class="feature_tile" href="{% url 'index_feature' feature.id %}"> 
+                        <img id="feature_icon" src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="">
+                        {{ feature.name }} 
+                    </a>
+                {% endif %}
             {% endfor %}
-        </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="container">
         <div class="listing-grid">
             {% for listing in listings %}    
             <a href="{% url 'detail' listing.id %}">
                 <div class="listing-tile">
                     <img src="{{ listing.main_img }}" alt="">
-                    <h2>{{ listing.name }}</h2>
-                    <h3><span class="bold">${{ listing.price }}</span>/night</h3>
+                    <h3>{{ listing.name }}</h3>
+                    <h4><span class="bold">${{ listing.price }}</span> night</h4>
                 </div>
             </a>
             {% endfor %}

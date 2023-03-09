@@ -2,10 +2,9 @@
 
 {% block content %}
 
-<h1>Details {{user.id}}</h1>
 <div class="section">
     <div class="container">
-        <h2>{{ listing.name }}</h2>
+        <h1>{{ listing.name }}</h1>
         <div class="listing-imgs">
             <img src="{{ listing.main_img }}" class="listing-img">
             <div class="second-img">
@@ -14,7 +13,7 @@
             </div>
             <div class="second-img">
                 <img src="{{ listing.fourth_img }}" class="listing-img">
-                <img src="{{ listing.fith_img }}" class="listing-img">
+                <img src="{{ listing.fifth_img }}" class="listing-img">
             </div>
         </div>
         <ul class="listing-info">
@@ -37,16 +36,6 @@
 </div>
 
 
-<!-- <script>
-    const dateEl = document.getElementById('id_checkin');
-    M.Datepicker.init(dateEl, {
-      format: 'yyyy-mm-dd',
-      defaultDate: new Date(),
-      setDefaultDate: true,
-      autoClose: true
-    });
-
-</script> -->
 
 
 {% endblock %}

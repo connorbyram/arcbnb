@@ -17,11 +17,15 @@ def listings_index(request):
          'features': features,
    })
 def index_feature(request, feature_id):
-   listings = Listing.objects.all()
+   features = Feature.objects.all()
+   listings = Listing.objects.filter(features = feature_id)
    feature = Feature.objects.get(id=feature_id)
+   current = feature_id
    return render(request, 'listings/filter/index_feature.html', {
          'listings': listings,
          'feature': feature,
+         'features': features,
+         'current': current,
    })
 
 def listings_detail(request, listing_id):
