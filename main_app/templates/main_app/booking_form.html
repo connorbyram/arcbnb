@@ -1,18 +1,57 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Update Booking at {{ booking.listing.name }}</h1>
-<form action="" method="POST">
-    <!-- Django requires the following for security purposes -->
-    {% csrf_token %}
-    <table>
-      <!-- Render the inputs inside of <tr>s & <td>s -->
-      {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
-
-
+  <div class="section">
+    <div class="container">
+        <h1>Update Booking at {{ booking.listing.name }}</h1>
+        <div class="listing-imgs">
+            <img src="{{ booking.listing.main_img }}" class="listing-img">
+            <div class="second-img">
+                <img src="{{ booking.listing.second_img }}" class="listing-img">
+                <img src="{{ booking.listing.third_img }}" class="listing-img">
+            </div>
+            <div class="second-img">
+                <img src="{{ booking.listing.fourth_img }}" class="listing-img">
+                <img src="{{ booking.listing.fifth_img }}" class="listing-img">
+            </div>
+        </div>
+       <div class="listing-info">
+            <div class="listing-detail">
+                <h2>A {{ booking.listing.arc_type }} Build from {{ booking.listing.yearbuilt }}</h2>
+                <div class="accommodation">
+                    <h4>{{ booking.listing.guest_num }} Guests · </h4>
+                    <h4>{{ booking.listing.bedrooms }} Bedrooms · </h4>
+                    <h4> {{ booking.listing.bathrooms }} Bath</h4>
+                </div>
+                <p>{{ booking.listing.description }}</p>
+                <div class="feature-table">
+                    <h2>This place offers</h2>
+                    {% for feature in booking.listing.features.all %}
+                        <div>
+                            <img id="feature_icon" src="{{ feature.icon }}" alt="">
+                            {{ feature.name }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="booking-form">
+                <form action="" method="POST">
+                    <h2>Your Booking Details</h2>
+                    <p><strong>Price: </strong>${{ booking.listing.price }} night</p>
+                      {% csrf_token %}
+                      <table>
+                        {{ form.as_table }}
+                      </table>
+                    <p><strong>Check-in: </strong>{{ booking.checkin }} </p>
+                    <p><strong>Check-out: </strong>{{ booking.checkout }}</p>
+                    <br>
+                    <input type="submit" value="Update!" class="btn">
+                    <br>
+                </form>
+            </div>           
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

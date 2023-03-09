@@ -16,22 +16,35 @@
                 <img src="{{ listing.fifth_img }}" class="listing-img">
             </div>
         </div>
-        <ul class="listing-info">
-            <li>{{ listing.arc_type }}</li>
-            <li>Built in {{ listing.yearbuilt }}</li>
-            <li>{{ listing.guest_num }} Guests</li>
-            <li>{{ listing.bedrooms }} Bedrooms</li>
-            <li>{{ listing.bathrooms }} Bath</li>
-            <li>{{ listing.description }}</li>
-        </ul>
-        
-        <form action="{% url 'add_booking' listing.id %}" method="POST">
-            {% csrf_token %}
-            <!-- Render the inputs -->
-            {{ booking_form.as_p }}
-            <input type="submit" class="btn" value="Add Booking">
-        </form>
-      
+       <div class="listing-info">
+            <div class="listing-detail">
+                <h2>A {{ listing.arc_type }} Build from {{ listing.yearbuilt }}</h2>
+                <div class="accommodation">
+                    <h4>{{ listing.guest_num }} Guests · </h4>
+                    <h4>{{ listing.bedrooms }} Bedrooms · </h4>
+                    <h4> {{ listing.bathrooms }} Bath</h4>
+                </div>
+                <p>{{ listing.description }}</p>
+                <div class="feature-table">
+                    <h2>This place offers</h2>
+                    {% for feature in listing.features.all %}
+                        <div>
+                            <img id="feature_icon" src="{{ feature.icon }}" alt="">
+                            {{ feature.name }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="booking-form">
+                <form action="{% url 'add_booking' listing.id %}" method="POST">
+                    <h3>${{ listing.price }}</h3><span class="light"> night</span>
+                    {% csrf_token %}
+                    <!-- Render the inputs -->
+                    {{ booking_form.as_p }}
+                    <input type="submit" class="btn" value="Add Booking">
+                </form>
+            </div>           
+        </div>
     </div>
 </div>
 
