@@ -31,8 +31,11 @@ def index_feature(request, feature_id):
 def listings_detail(request, listing_id):
    listing = Listing.objects.get(id=listing_id)
    booking_form = BookingForm()
+   feature = listing.features.all()
+   # id_list = listing.features.
+   # features = Feature.objects.filter(id__in=id_list)
    return render(request, 'listings/detail.html', {
-      'listing': listing, 'booking_form': booking_form
+      'listing': listing, 'booking_form': booking_form, 'feature': feature,
    })
   
 def add_booking(request, listing_id):
@@ -44,9 +47,9 @@ def add_booking(request, listing_id):
          new_booking.listing_id = listing_id
          new_booking.user = user
          new_booking.save()
-      return redirect('/', listing_id=listing_id)
+      return redirect('/user/bookings', listing_id=listing_id)
    else:
-      return redirect('/accounts/login', listing_id=listing_id)
+      return redirect('/listings/detail', listing_id=listing_id)
    
 class BookingUpdate(UpdateView):
   model = Booking

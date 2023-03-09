@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Cancel Booking</h1>
 
-  <h4>Are you sure you want to cancel your booking at {{ booking.listing.name }} on {{ booking.checkin }}?</h4>
-
-  <form action="" method="POST">
+<form class="cancel" action="" method="POST">
+    <h1>Are you sure?</h1>
+    <p>Do you want to cancel your booking at <strong>{{ booking.listing.name }}</strong> on <strong>{{ booking.checkin }}</strong>?</p>
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'bookings' %}">Cancel</a>
+    <div class="btn-div">
+      <a class="btn" href="{% url 'bookings' %}">Keep Booking</a>
+      <input type="submit" value="Yes - Delete!" class="btn-2">
+    </div>
   </form>
 {% endblock %}
