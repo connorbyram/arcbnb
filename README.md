@@ -19,6 +19,8 @@
 <img src="https://i.imgur.com/lypKPIx.png">
 <img src="https://i.imgur.com/zZMVTpt.png">
 
+* images sourced from Google images for educational purposes
+
 
 # 💻 Technologies Used
 - ![HTML5](https://img.shields.io/badge/-HTML5-05122A?style=flat&logo=html5)
