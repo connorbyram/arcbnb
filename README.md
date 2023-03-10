@@ -8,10 +8,16 @@
 [![LinkedIn Badge](https://img.shields.io/badge/-@connorbyram-blue?style=flat&logo=Linkedin&logoColor=black)](https://www.linkedin.com/in/connorbyram/)
 [![LinkedIn Badge](https://img.shields.io/badge/-@mjmickd-blue?style=flat&logo=Linkedin&logoColor=black)](https://www.linkedin.com/in/mjmickd/)
 
- A website where you can browse all the beautifuly architured houses in the Greater Los Angeles area.
+ A website where you can browse all the architecturally astounding builds within the Greater Los Angeles area.
 </div>
 
 # 🌟 Screenshots
+<img src=""> Add home PAge
+<img src="https://i.imgur.com/JuhkJys.png">
+<img src="https://i.imgur.com/aLVyxkx.png">
+<img src="https://i.imgur.com/EYpqYMW.png">
+<img src="https://i.imgur.com/lypKPIx.png">
+<img src="https://i.imgur.com/zZMVTpt.png">
 
 
 # 💻 Technologies Used
@@ -32,9 +38,21 @@
 
 
 # 📝 Getting Started 
-1. On the front page you are able to view all availible listings
+- On the home page you are able to view all recommended listings by features within builds.
+- Explore listings that arcbnb offers.
+- Find homes based upon the great features that they possess.  
+- Sign up/login in order to create a booking.
+- View bookings through user drop-down menu. 
+- Within your booking detail's page, you're able to udpate/cancel your upcoming trip. 
+ 
 
+###  [Checkout arcbnb Trello Board](https://trello.com/b/QnxMJka0/arcbnb)
 
 
 # 🌀 Upcoming Features
-- Better / cleaner UI 
+- Adding a wishlist 
+- Ability to submit your own listing 
+- Google maps API 
+- Ability to add reviews
+- Expanding outside of L.A. 
+- Adding a search bar 
