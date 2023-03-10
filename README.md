@@ -30,7 +30,6 @@
 - ![Trello](https://img.shields.io/badge/-Trello-05122A?style=flat&logo=trello)
 - ![Heroku](https://img.shields.io/badge/-Heroku-05122A?style=flat&logo=heroku)
 - ![Github](https://img.shields.io/badge/-GitHub-05122A?style=flat&logo=github)
-- ![Materialize CSS](https://img.shields.io/badge/-Materialize_CSS-05122A?style=flat&logo=materialdesign)
 - ![AWS S3](https://img.shields.io/badge/-AWS_S3-05122A?style=flat&logo=amazons3)
 - ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
