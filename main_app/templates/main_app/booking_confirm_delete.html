@@ -1,14 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="blur">
+  <form class="cancel" action="" method="POST">
+      <h1>Are you sure?</h1>
+      <p>Do you want to cancel your booking at <strong>{{ booking.listing.name }}</strong> on <strong>{{ booking.checkin }}</strong>?</p>
+      {% csrf_token %}
+      <div class="btn-div">
+        <a class="btn" href="{% url 'bookings' %}">Keep Booking</a>
+        <input type="submit" value="Cancel My Booking" class="btn-2">
+      </div>
+    </form>
+</div>
 
-<form class="cancel" action="" method="POST">
-    <h1>Are you sure?</h1>
-    <p>Do you want to cancel your booking at <strong>{{ booking.listing.name }}</strong> on <strong>{{ booking.checkin }}</strong>?</p>
-    {% csrf_token %}
-    <div class="btn-div">
-      <a class="btn" href="{% url 'bookings' %}">Keep Booking</a>
-      <input type="submit" value="Yes - Delete!" class="btn-2">
-    </div>
-  </form>
+<div class="section">
+  <div class="container">
+      <h1>{{ booking.listing.name }}</h1>
+      <div class="listing-imgs">
+          <img src="{{ booking.listing.main_img }}" class="listing-img">
+          <div class="second-img">
+              <img src="{{ booking.listing.second_img }}" class="listing-img">
+              <img src="{{ booking.listing.third_img }}" class="listing-img">
+          </div>
+          <div class="second-img">
+              <img src="{{ booking.listing.fourth_img }}" class="listing-img">
+              <img src="{{ booking.listing.fifth_img }}" class="listing-img">
+          </div>
+      </div>
+     <div class="listing-info">
+          <div class="listing-detail">
+              <h2>A {{ booking.listing.arc_type }} Build from {{ booking.listing.yearbuilt }}</h2>
+              <div class="accommodation">
+                  <h4>{{ booking.listing.guest_num }} Guests · </h4>
+                  <h4>{{ booking.listing.bedrooms }} Bedrooms · </h4>
+                  <h4> {{ booking.listing.bathrooms }} Bath</h4>
+              </div>
+              <p>{{ booking.listing.description }}</p>
+              <div class="feature-table">
+                  <h2>This place offers</h2>
+                  {% for feature in booking.listing.features.all %}
+                      <div>
+                          <img id="feature_icon" src="{{ feature.icon }}" alt="">
+                          {{ feature.name }}
+                      </div>
+                  {% endfor %}
+              </div>
+          </div>
+          <div class="booking-form">
+              <form action="" method="POST">
+                  <h2>Your Booking Details</h2>
+                  <p><strong>Price: </strong>${{ booking.listing.price }} night</p>
+                  <p><strong>Guests: </strong>{{ booking.guests }}</p>
+                  <p><strong>Check-in: </strong>{{ booking.checkin }} </p>
+                  <p><strong>Check-out: </strong>{{ booking.checkout }}</p>
+                  <br>
+                  <a class="btn" href="{% url 'booking_update' booking.id %}">Update Booking</a>
+                  <a class="btn-2" href="{% url 'booking_delete' booking.id %}">Cancel</a>
+                  <br>
+                  <br>
+              </form>
+          </div>           
+      </div>
+  </div>
+</div>
+
 {% endblock %}

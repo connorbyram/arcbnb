@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 ARCTYPE = (
     ('Modern', 'Modern'),
     ('Midcentury Modern', 'Midcentury Modern'),
-    ('Neo Classica', 'Neo Classical'),
+    ('Neo Classical', 'Neo Classical'),
     ('California Romanza', 'California Romanza'),
     ('Craftsman', 'Craftsman'),
     ('Colonial Revival', 'Colonial Revival'),
@@ -62,6 +62,9 @@ class Booking(models.Model):
         on_delete=models.CASCADE
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['checkin']
 
     def get_absolute_url(self):
         return reverse('booking_detail', kwargs={'booking_id': self.id})
