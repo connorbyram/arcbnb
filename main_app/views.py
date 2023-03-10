@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 from .models import Listing, Booking, Feature
 from .forms import BookingForm
@@ -8,7 +10,13 @@ from .forms import BookingForm
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+ listings = Listing.objects.all()
+ features = Feature.objects.all()
+ return render(request, 'home.html', {
+         'listings': listings,
+         'features': features,
+   })
+
 def listings_index(request):
    listings = Listing.objects.all()
    features = Feature.objects.all()
@@ -16,6 +24,7 @@ def listings_index(request):
          'listings': listings,
          'features': features,
    })
+
 def index_feature(request, feature_id):
    features = Feature.objects.all()
    listings = Listing.objects.filter(features = feature_id)
@@ -37,7 +46,8 @@ def listings_detail(request, listing_id):
    return render(request, 'listings/detail.html', {
       'listing': listing, 'booking_form': booking_form, 'feature': feature,
    })
-  
+
+@login_required
 def add_booking(request, listing_id):
    if request.user.is_authenticated:
       user = request.user
@@ -50,17 +60,17 @@ def add_booking(request, listing_id):
       return redirect('/user/bookings', listing_id=listing_id)
    else:
       return redirect('/listings/detail', listing_id=listing_id)
-   
-class BookingUpdate(UpdateView):
+  
+class BookingUpdate(LoginRequiredMixin,UpdateView):
   model = Booking
   fields = ['guests']
 
-class BookingDelete(DeleteView):
+class BookingDelete(LoginRequiredMixin, DeleteView):
   model = Booking
   success_url = '/user/bookings'
 
 
-
+@login_required
 def user_bookings(request):
    user = request.user
    bookings = Booking.objects.filter(user=user)
@@ -70,7 +80,7 @@ def user_bookings(request):
       'bookings': bookings,
    })
 
-
+@login_required
 def booking_detail(request, booking_id):
    user = request.user
    booking = Booking.objects.get(id=booking_id)
